@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 class AZMainVC: UIViewController {
 
@@ -22,11 +23,17 @@ class AZMainVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        let loginVC = AZLoginVC()
         
-        let navVC = UINavigationController(rootViewController: loginVC)
-        let mainVC =  UIApplication.shared.windows.first?.rootViewController
-        mainVC?.present(navVC, animated: true, completion: nil)
+        if  let retrievedString = KeychainWrapper.standard.string(forKey: "token") {
+            print(retrievedString)
+            print("success")
+        } else {
+            let loginVC = AZLoginVC()
+            
+            let navVC = UINavigationController(rootViewController: loginVC)
+            let mainVC =  UIApplication.shared.windows.first?.rootViewController
+            mainVC?.present(navVC, animated: true, completion: nil)
+        }
     }
     
 

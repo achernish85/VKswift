@@ -7,18 +7,19 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
+
 
 class AZLoginVC: UIViewController {
    
         var webView : UIWebView = UIWebView()
-        var token = ""
+       // var token = ""
         
         override func viewDidLoad() {
             super.viewDidLoad()
             
         }
     
-        
         override func viewWillLayoutSubviews() {
             
         }
@@ -55,7 +56,6 @@ class AZLoginVC: UIViewController {
             
             self.dismiss(animated: true, completion: nil)
         }
-        
     }
     
     extension AZLoginVC: UIWebViewDelegate {
@@ -69,12 +69,12 @@ class AZLoginVC: UIViewController {
                 if currentURL.contains("access_token=") && currentURL.contains("expires_in=") {
                 let strings1 = request.url?.description.components(separatedBy: "&expires_in")
                 let strings2 = strings1?.first?.components(separatedBy: "access_token=")
-                token = (strings2?.last)!
+                let token = (strings2?.last)!
                 print("token: ",token)
-                
-                
+                    
+                 _ = KeychainWrapper.standard.set(token, forKey: "token")
+                 
                 dismiss(animated: true, completion: nil)
-                
                 
                 return false
             }
