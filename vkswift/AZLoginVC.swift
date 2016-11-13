@@ -43,7 +43,7 @@ class AZLoginVC: UIViewController {
                 + "scope=139286&"
                 + "response_type=token&"
                 + "v=5.53"
-            
+            //https://oauth.vk.com/authorize?client_id=5634472&display=mobile&redirect_uri=https://oauth.vk.com/blank.html&scope=139286&response_type=token&v=5.53
             
             webView.delegate = self
             let url = NSURL(string: urlString)
@@ -67,12 +67,16 @@ class AZLoginVC: UIViewController {
             
             if (currentURL.hasPrefix("https://oauth.vk.com")) {
                 if currentURL.contains("access_token=") && currentURL.contains("expires_in=") {
-                let strings1 = request.url?.description.components(separatedBy: "&expires_in")
+                let strings1 = request.url?.description.components(separatedBy: "&expires_in=")
                 let strings2 = strings1?.first?.components(separatedBy: "access_token=")
-                let token = (strings2?.last)!
-                print("token: ",token)
+                let string3 = strings1?.last?.components(separatedBy: "&user_id=")
                     
-                 _ = KeychainWrapper.standard.set(token, forKey: "token")
+                  let interval = TimeInterval((string3?.first)!)
+                  let expiresIN  = NSDate(timeIntervalSinceNow: interval!)
+                    
+                 _ = KeychainWrapper.standard.set((strings2?.last)!, forKey: KEY_TOKEN)
+                 _ = KeychainWrapper.standard.set((string3?.last)!, forKey: KEY_USERID)
+                 _ = KeychainWrapper.standard.set(expiresIN as NSCoding, forKey: KEY_EXPIRES)
                  
                 dismiss(animated: true, completion: nil)
                 

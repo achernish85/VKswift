@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		841B4ABC1DD857360051287E /* AZUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B4ABB1DD857360051287E /* AZUser.swift */; };
+		841B4ABE1DD857610051287E /* AZServerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B4ABD1DD857610051287E /* AZServerObject.swift */; };
+		841B4AC01DD863AD0051287E /* AZServerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B4ABF1DD863AD0051287E /* AZServerClient.swift */; };
+		841B4AC21DD865A00051287E /* AZToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B4AC11DD865A00051287E /* AZToken.swift */; };
+		841B4ACD1DD890E70051287E /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B4ACC1DD890E70051287E /* constants.swift */; };
 		84234EA91DD65F9A003F28A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84234EA81DD65F9A003F28A4 /* AppDelegate.swift */; };
 		84234EAB1DD65F9A003F28A4 /* AZMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84234EAA1DD65F9A003F28A4 /* AZMainVC.swift */; };
 		84234EAE1DD65F9A003F28A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84234EAC1DD65F9A003F28A4 /* Main.storyboard */; };
@@ -18,6 +23,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		841B4ABB1DD857360051287E /* AZUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZUser.swift; sourceTree = "<group>"; };
+		841B4ABD1DD857610051287E /* AZServerObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZServerObject.swift; sourceTree = "<group>"; };
+		841B4ABF1DD863AD0051287E /* AZServerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZServerClient.swift; sourceTree = "<group>"; };
+		841B4AC11DD865A00051287E /* AZToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZToken.swift; sourceTree = "<group>"; };
+		841B4ACC1DD890E70051287E /* constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		84234EA51DD65F9A003F28A4 /* vkswift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vkswift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84234EA81DD65F9A003F28A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84234EAA1DD65F9A003F28A4 /* AZMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AZMainVC.swift; sourceTree = "<group>"; };
@@ -52,6 +62,41 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		841B4AC31DD871F80051287E /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				84234EAA1DD65F9A003F28A4 /* AZMainVC.swift */,
+				84234EBD1DD6661D003F28A4 /* AZLoginVC.swift */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
+		841B4AC41DD872230051287E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				841B4AC11DD865A00051287E /* AZToken.swift */,
+				841B4ABB1DD857360051287E /* AZUser.swift */,
+				841B4ABD1DD857610051287E /* AZServerObject.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		841B4AC51DD872440051287E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				841B4ABF1DD863AD0051287E /* AZServerClient.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		841B4AC91DD8869A0051287E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				841B4ACC1DD890E70051287E /* constants.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		84234E9C1DD65F9A003F28A4 = {
 			isa = PBXGroup;
 			children = (
@@ -73,10 +118,12 @@
 		84234EA71DD65F9A003F28A4 /* vkswift */ = {
 			isa = PBXGroup;
 			children = (
-				84234EA81DD65F9A003F28A4 /* AppDelegate.swift */,
-				84234EAA1DD65F9A003F28A4 /* AZMainVC.swift */,
-				84234EBD1DD6661D003F28A4 /* AZLoginVC.swift */,
+				841B4AC91DD8869A0051287E /* Utils */,
+				841B4AC31DD871F80051287E /* controllers */,
+				841B4AC51DD872440051287E /* Services */,
+				841B4AC41DD872230051287E /* Models */,
 				84234EAC1DD65F9A003F28A4 /* Main.storyboard */,
+				84234EA81DD65F9A003F28A4 /* AppDelegate.swift */,
 				84234EB21DD65F9A003F28A4 /* Assets.xcassets */,
 				84234EB41DD65F9A003F28A4 /* LaunchScreen.storyboard */,
 				84234EB71DD65F9A003F28A4 /* Info.plist */,
@@ -218,7 +265,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				841B4ABE1DD857610051287E /* AZServerObject.swift in Sources */,
 				84234EAB1DD65F9A003F28A4 /* AZMainVC.swift in Sources */,
+				841B4ACD1DD890E70051287E /* constants.swift in Sources */,
+				841B4AC01DD863AD0051287E /* AZServerClient.swift in Sources */,
+				841B4ABC1DD857360051287E /* AZUser.swift in Sources */,
+				841B4AC21DD865A00051287E /* AZToken.swift in Sources */,
 				84234EA91DD65F9A003F28A4 /* AppDelegate.swift in Sources */,
 				84234EB11DD65F9A003F28A4 /* vkswift.xcdatamodeld in Sources */,
 				84234EBE1DD6661D003F28A4 /* AZLoginVC.swift in Sources */,
