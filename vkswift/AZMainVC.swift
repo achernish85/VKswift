@@ -37,11 +37,14 @@ class AZMainVC: UITableViewController {
     }
 
     func updateDataBase(newPosts:[AZPost]) {
-        container?.performBackgroundTask({ (contex) in
-            
-            contex.saveThrows()
-        })
-    }
+         managedContext.perform {
+            for post in newPosts {
+                VKPost.postWithUserInfo(post, inManagedObjectContext:managedContext)
+            }
+            self.managedContext.save
+        }
+        
+            }
     
     
     override func viewDidAppear(_ animated: Bool) {

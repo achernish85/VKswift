@@ -11,5 +11,7 @@ import CoreData
 
 @objc(VKPost)
 public class VKPost: NSManagedObject {
+    
+    class func postWithUserInfo(
 
 }
