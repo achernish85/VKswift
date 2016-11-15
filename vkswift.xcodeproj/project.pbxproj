@@ -7,36 +7,52 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		841044D01DDB024700E9E0F5 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841044CF1DDB024700E9E0F5 /* CoreDataStack.swift */; };
+		841044D31DDB0AF000E9E0F5 /* vkswift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 841044D11DDB0AF000E9E0F5 /* vkswift.xcdatamodeld */; };
+		841044D61DDB0B4000E9E0F5 /* VKPost+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841044D41DDB0B4000E9E0F5 /* VKPost+CoreDataClass.swift */; };
+		841044D71DDB0B4000E9E0F5 /* VKPost+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841044D51DDB0B4000E9E0F5 /* VKPost+CoreDataProperties.swift */; };
+		841044DA1DDB25C600E9E0F5 /* VKUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841044D81DDB25C600E9E0F5 /* VKUser+CoreDataClass.swift */; };
+		841044DB1DDB25C600E9E0F5 /* VKUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841044D91DDB25C600E9E0F5 /* VKUser+CoreDataProperties.swift */; };
 		841B4ABC1DD857360051287E /* AZUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B4ABB1DD857360051287E /* AZUser.swift */; };
 		841B4ABE1DD857610051287E /* AZServerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B4ABD1DD857610051287E /* AZServerObject.swift */; };
 		841B4AC01DD863AD0051287E /* AZServerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B4ABF1DD863AD0051287E /* AZServerClient.swift */; };
 		841B4AC21DD865A00051287E /* AZToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B4AC11DD865A00051287E /* AZToken.swift */; };
 		841B4ACD1DD890E70051287E /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B4ACC1DD890E70051287E /* constants.swift */; };
+		841B4ACF1DD8F29D0051287E /* AZPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B4ACE1DD8F29D0051287E /* AZPost.swift */; };
 		84234EA91DD65F9A003F28A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84234EA81DD65F9A003F28A4 /* AppDelegate.swift */; };
 		84234EAB1DD65F9A003F28A4 /* AZMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84234EAA1DD65F9A003F28A4 /* AZMainVC.swift */; };
 		84234EAE1DD65F9A003F28A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84234EAC1DD65F9A003F28A4 /* Main.storyboard */; };
-		84234EB11DD65F9A003F28A4 /* vkswift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84234EAF1DD65F9A003F28A4 /* vkswift.xcdatamodeld */; };
 		84234EB31DD65F9A003F28A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84234EB21DD65F9A003F28A4 /* Assets.xcassets */; };
 		84234EB61DD65F9A003F28A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84234EB41DD65F9A003F28A4 /* LaunchScreen.storyboard */; };
 		84234EBE1DD6661D003F28A4 /* AZLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84234EBD1DD6661D003F28A4 /* AZLoginVC.swift */; };
+		84EA69451DD997AA005944BD /* CoreDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA69441DD997AA005944BD /* CoreDataTableViewController.swift */; };
+		84EA69471DD998CB005944BD /* MOCExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA69461DD998CB005944BD /* MOCExtensions.swift */; };
 		D3759D3592BD849021FB4703 /* Pods_vkswift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BA3D2CA8148A9B17C167DD2 /* Pods_vkswift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		841044CF1DDB024700E9E0F5 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		841044D21DDB0AF000E9E0F5 /* vkswift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = vkswift.xcdatamodel; sourceTree = "<group>"; };
+		841044D41DDB0B4000E9E0F5 /* VKPost+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VKPost+CoreDataClass.swift"; sourceTree = "<group>"; };
+		841044D51DDB0B4000E9E0F5 /* VKPost+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VKPost+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		841044D81DDB25C600E9E0F5 /* VKUser+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VKUser+CoreDataClass.swift"; sourceTree = "<group>"; };
+		841044D91DDB25C600E9E0F5 /* VKUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VKUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		841B4ABB1DD857360051287E /* AZUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZUser.swift; sourceTree = "<group>"; };
 		841B4ABD1DD857610051287E /* AZServerObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZServerObject.swift; sourceTree = "<group>"; };
 		841B4ABF1DD863AD0051287E /* AZServerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZServerClient.swift; sourceTree = "<group>"; };
 		841B4AC11DD865A00051287E /* AZToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZToken.swift; sourceTree = "<group>"; };
 		841B4ACC1DD890E70051287E /* constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
+		841B4ACE1DD8F29D0051287E /* AZPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZPost.swift; sourceTree = "<group>"; };
 		84234EA51DD65F9A003F28A4 /* vkswift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vkswift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84234EA81DD65F9A003F28A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84234EAA1DD65F9A003F28A4 /* AZMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AZMainVC.swift; sourceTree = "<group>"; };
 		84234EAD1DD65F9A003F28A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		84234EB01DD65F9A003F28A4 /* vkswift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = vkswift.xcdatamodel; sourceTree = "<group>"; };
 		84234EB21DD65F9A003F28A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84234EB51DD65F9A003F28A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84234EB71DD65F9A003F28A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84234EBD1DD6661D003F28A4 /* AZLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZLoginVC.swift; sourceTree = "<group>"; };
+		84EA69441DD997AA005944BD /* CoreDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTableViewController.swift; sourceTree = "<group>"; };
+		84EA69461DD998CB005944BD /* MOCExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOCExtensions.swift; sourceTree = "<group>"; };
 		9BA3D2CA8148A9B17C167DD2 /* Pods_vkswift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vkswift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC14D3EE5FFEF98DFBC15B04 /* Pods-vkswift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vkswift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-vkswift/Pods-vkswift.debug.xcconfig"; sourceTree = "<group>"; };
 		DF768CD34581C645AB9EC7ED /* Pods-vkswift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vkswift.release.xcconfig"; path = "Pods/Target Support Files/Pods-vkswift/Pods-vkswift.release.xcconfig"; sourceTree = "<group>"; };
@@ -66,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				84234EAA1DD65F9A003F28A4 /* AZMainVC.swift */,
+				84EA69441DD997AA005944BD /* CoreDataTableViewController.swift */,
 				84234EBD1DD6661D003F28A4 /* AZLoginVC.swift */,
 			);
 			name = controllers;
@@ -76,6 +93,7 @@
 			children = (
 				841B4AC11DD865A00051287E /* AZToken.swift */,
 				841B4ABB1DD857360051287E /* AZUser.swift */,
+				841B4ACE1DD8F29D0051287E /* AZPost.swift */,
 				841B4ABD1DD857610051287E /* AZServerObject.swift */,
 			);
 			name = Models;
@@ -118,18 +136,32 @@
 		84234EA71DD65F9A003F28A4 /* vkswift */ = {
 			isa = PBXGroup;
 			children = (
+				84EA69501DD9B069005944BD /* CoreData */,
 				841B4AC91DD8869A0051287E /* Utils */,
 				841B4AC31DD871F80051287E /* controllers */,
 				841B4AC51DD872440051287E /* Services */,
 				841B4AC41DD872230051287E /* Models */,
 				84234EAC1DD65F9A003F28A4 /* Main.storyboard */,
 				84234EA81DD65F9A003F28A4 /* AppDelegate.swift */,
+				841044D11DDB0AF000E9E0F5 /* vkswift.xcdatamodeld */,
 				84234EB21DD65F9A003F28A4 /* Assets.xcassets */,
 				84234EB41DD65F9A003F28A4 /* LaunchScreen.storyboard */,
 				84234EB71DD65F9A003F28A4 /* Info.plist */,
-				84234EAF1DD65F9A003F28A4 /* vkswift.xcdatamodeld */,
 			);
 			path = vkswift;
+			sourceTree = "<group>";
+		};
+		84EA69501DD9B069005944BD /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				841044D81DDB25C600E9E0F5 /* VKUser+CoreDataClass.swift */,
+				841044D91DDB25C600E9E0F5 /* VKUser+CoreDataProperties.swift */,
+				841044D41DDB0B4000E9E0F5 /* VKPost+CoreDataClass.swift */,
+				841044D51DDB0B4000E9E0F5 /* VKPost+CoreDataProperties.swift */,
+				84EA69461DD998CB005944BD /* MOCExtensions.swift */,
+				841044CF1DDB024700E9E0F5 /* CoreDataStack.swift */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 		B6DAAD5CB7C132FAB8A02502 /* Pods */ = {
@@ -267,12 +299,20 @@
 			files = (
 				841B4ABE1DD857610051287E /* AZServerObject.swift in Sources */,
 				84234EAB1DD65F9A003F28A4 /* AZMainVC.swift in Sources */,
+				84EA69471DD998CB005944BD /* MOCExtensions.swift in Sources */,
+				841044D01DDB024700E9E0F5 /* CoreDataStack.swift in Sources */,
+				84EA69451DD997AA005944BD /* CoreDataTableViewController.swift in Sources */,
+				841B4ACF1DD8F29D0051287E /* AZPost.swift in Sources */,
+				841044D31DDB0AF000E9E0F5 /* vkswift.xcdatamodeld in Sources */,
 				841B4ACD1DD890E70051287E /* constants.swift in Sources */,
+				841044D71DDB0B4000E9E0F5 /* VKPost+CoreDataProperties.swift in Sources */,
+				841044DA1DDB25C600E9E0F5 /* VKUser+CoreDataClass.swift in Sources */,
+				841044D61DDB0B4000E9E0F5 /* VKPost+CoreDataClass.swift in Sources */,
 				841B4AC01DD863AD0051287E /* AZServerClient.swift in Sources */,
+				841044DB1DDB25C600E9E0F5 /* VKUser+CoreDataProperties.swift in Sources */,
 				841B4ABC1DD857360051287E /* AZUser.swift in Sources */,
 				841B4AC21DD865A00051287E /* AZToken.swift in Sources */,
 				84234EA91DD65F9A003F28A4 /* AppDelegate.swift in Sources */,
-				84234EB11DD65F9A003F28A4 /* vkswift.xcdatamodeld in Sources */,
 				84234EBE1DD6661D003F28A4 /* AZLoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,6 +357,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -366,6 +407,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -394,6 +436,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AC14D3EE5FFEF98DFBC15B04 /* Pods-vkswift.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = PWK5859Q78;
 				INFOPLIST_FILE = vkswift/Info.plist;
@@ -409,6 +452,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DF768CD34581C645AB9EC7ED /* Pods-vkswift.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = PWK5859Q78;
 				INFOPLIST_FILE = vkswift/Info.plist;
@@ -444,12 +488,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		84234EAF1DD65F9A003F28A4 /* vkswift.xcdatamodeld */ = {
+		841044D11DDB0AF000E9E0F5 /* vkswift.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				84234EB01DD65F9A003F28A4 /* vkswift.xcdatamodel */,
+				841044D21DDB0AF000E9E0F5 /* vkswift.xcdatamodel */,
 			);
-			currentVersion = 84234EB01DD65F9A003F28A4 /* vkswift.xcdatamodel */;
+			currentVersion = 841044D21DDB0AF000E9E0F5 /* vkswift.xcdatamodel */;
 			path = vkswift.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

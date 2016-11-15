@@ -10,25 +10,39 @@ import UIKit
 import SwiftKeychainWrapper
 import Alamofire
 import SwiftyJSON
+import CoreData
 
 
-class AZMainVC: UIViewController {
+class AZMainVC: UITableViewController {
     
-    @IBOutlet weak var label: UILabel!
     
-    @IBOutlet weak var tableView: UITableView!
+    var user: AZUser? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
-    var user: AZUser?
+    var postsArray = [AZPost]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    var managedContext: NSManagedObjectContext!
+  //  let context = ad.persistentContainer.viewContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
+    func updateDataBase(newPosts:[AZPost]) {
+        container?.performBackgroundTask({ (contex) in
+            
+            contex.saveThrows()
+        })
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -43,19 +57,20 @@ class AZMainVC: UIViewController {
         }
     }
     
-    func loadingInfo(withToken token: String) {
+   private func loadingInfo(withToken token: String) {
         AZServerClient.manager.getUser(userID: token) { (user) in
             print("autorized: \(user.firstName) \(user.lastName)")
             self.user = user
-            self.label.text = user.firstName
             
-//            AZServerClient.manager.getGroupWall(string!, offset: 0, count: 10, onSuccess: { (posts) in
-//                self.postsArray = posts
-//            })
+            
+            AZServerClient.manager.getGroupWall(groupID: token, offset: 0, count: 10, onSuccess: {[weak weakSelf = self] (posts) in
+                weakSelf?.postsArray = posts
+                weakSelf?.updateDataBase(newPosts: self.postsArray)
+            })
         }
     }
     
-    func authentication() {
+   private func authentication() {
         KeychainWrapper.standard.removeObject(forKey: KEY_TOKEN)
         KeychainWrapper.standard.removeObject(forKey: KEY_USERID)
         KeychainWrapper.standard.removeObject(forKey: KEY_EXPIRES)
@@ -64,5 +79,69 @@ class AZMainVC: UIViewController {
         let mainVC =  UIApplication.shared.windows.first?.rootViewController
         mainVC?.present(navVC, animated: true, completion: nil)
     }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if section == 0 {
+            return 1
+        } else if section == 1{
+            return 1
+        } else {
+            return  self.postsArray.count
+        }
+    }
+    
+    private struct Storyboard {
+        static let cellIdentifierProfile = "profile"
+        static let cellIdentifierPost = "posts"
+        static let cellIdentifierNewPost = "newPost"
+        static let cellDefault = "cell"
+    }
+    //MARK:CellForRow
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.cellDefault, for: indexPath)
+            cell.textLabel?.text = user?.firstName
+            
+            return cell
+            
+        } else if indexPath.section == 2{
+            let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.cellDefault, for: indexPath)
+            let post = self.postsArray[indexPath.row]
+            cell.textLabel?.text = post.text
+            
+            return cell
+        } else {
+            
+            //TODO: add post wall
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.cellDefault, for: indexPath) as UITableViewCell
+            return cell
+        }
+    }
+    
+    //MARK TableViewDelegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 

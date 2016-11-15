@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="16A323" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="VKPost" representedClassName="VKPost" syncable="YES">
+    <entity name="VKPost" representedClassName="VKPost" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VKUser" inverseName="post" inverseEntity="VKUser" syncable="YES"/>
     </entity>
-    <entity name="VKUser" representedClassName="VKUser" syncable="YES">
-        <attribute name="firstName" optional="YES" syncable="YES"/>
+    <entity name="VKUser" representedClassName="VKUser" syncable="YES" codeGenerationType="class">
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="post" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="VKPost" inverseName="user" inverseEntity="VKPost" syncable="YES"/>
     </entity>
     <elements>
-        <element name="VKPost" positionX="-63" positionY="-18" width="128" height="88"/>
-        <element name="VKUser" positionX="-297" positionY="-36" width="128" height="73"/>
+        <element name="VKUser" positionX="-54" positionY="-9" width="128" height="73"/>
+        <element name="VKPost" positionX="133" positionY="-25" width="128" height="88"/>
     </elements>
 </model>

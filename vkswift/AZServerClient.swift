@@ -32,7 +32,7 @@ class AZServerClient {
         }
 }
 
-    func getGroupWall(groupID:String, offset: Int,count: Int, onSuccess:@escaping (NSMutableArray) -> Void) {
+    func getGroupWall(groupID:String, offset: Int,count: Int, onSuccess:@escaping ([AZPost]) -> Void) {
         
         let params : [String : AnyObject] = ["owner_id" : groupID as AnyObject,
                                              "offset" : offset as AnyObject,
@@ -41,7 +41,7 @@ class AZServerClient {
                                              "v" : 5.58 as AnyObject	]
         
         request("https://api.vk.com/method/wall.get",method: .get ,parameters: params).responseJSON { response in
-            let postsArray : NSMutableArray = []
+            var postsArray  = [AZPost]()
             let usersArray : NSMutableArray = []
             let jsonVK = JSON(response.result.value!).dictionary
             let jsonPosts = jsonVK!["response"]?["items"].arrayObject
@@ -51,18 +51,19 @@ class AZServerClient {
                 usersArray.add(user)
             }
             
-//            for dict in jsonPosts! {
-//                let post = AZPost(withResponseDictionary: dict as! [String : AnyObject])
-//                for users in usersArray  {
-//                    let user = users as! AZUser
-//                    //assign user to post
-//                    if post.fromID! == user.id! {
-//                        post.fromUser = user
-//                        postsArray.addObject(post)
-//                        break
-//                    }
-//                }
-//            }
+            for dict in jsonPosts! {
+                let post = AZPost(withResponseDictionary: dict as! [String : AnyObject])
+                for users in usersArray  {
+                    let user = users as! AZUser
+                    //assign user to post
+                    if post.fromID! == user.id! {
+                        post.fromUser = user
+                        postsArray.append(post)
+                        
+                        break
+                    }
+                }
+            }
             onSuccess(postsArray)
         }
 }
