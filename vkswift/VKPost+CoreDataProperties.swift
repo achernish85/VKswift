@@ -16,7 +16,7 @@ extension VKPost {
         return NSFetchRequest<VKPost>(entityName: "VKPost");
     }
 
-    @NSManaged public var id: String?
+    @NSManaged public var id: Int32
     @NSManaged public var text: String?
     @NSManaged public var user: VKUser?
 

@@ -16,7 +16,8 @@ extension VKUser {
         return NSFetchRequest<VKUser>(entityName: "VKUser");
     }
 
-    @NSManaged public var firstName: NSObject?
+    @NSManaged public var firstName: String?
+    @NSManaged public var id: Int32
     @NSManaged public var post: NSSet?
 
 }

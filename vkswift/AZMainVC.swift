@@ -12,9 +12,7 @@ import Alamofire
 import SwiftyJSON
 import CoreData
 
-
 class AZMainVC: UITableViewController {
-    
     
     var user: AZUser? {
         didSet {
@@ -28,27 +26,39 @@ class AZMainVC: UITableViewController {
         }
     }
     
-    var managedContext: NSManagedObjectContext!
+    var managedContext: NSManagedObjectContext! { didSet { updateUI() } }
   //  let context = ad.persistentContainer.viewContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
+    
+    private func updateUI() {
+        
+    }
 
     func updateDataBase(newPosts:[AZPost]) {
-         managedContext.perform {
+        managedContext.perform {
             for post in newPosts {
-                VKPost.postWithUserInfo(post, inManagedObjectContext:managedContext)
+                _ = VKPost.postWithUserInfo(postInfo: post, inManagedObjectContext:self.managedContext)
             }
-            self.managedContext.save
+            self.managedContext.saveThrows()
         }
-        
-            }
+    }
+    
+    func printDataBase() {
+        managedContext.perform {
+            let reqest: NSFetchRequest<VKPost> = VKPost.fetchRequest()
+            let result = try? self.managedContext.fetch(reqest)
+            print("posts cound = \(result?.count)")
+        }
+    }
     
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        
         let date = Date()
     //checking if token expires date is valid
         if (KeychainWrapper.standard.object(forKey: KEY_EXPIRES) as! NSDate).compare(date) == .orderedDescending {
@@ -69,6 +79,7 @@ class AZMainVC: UITableViewController {
             AZServerClient.manager.getGroupWall(groupID: token, offset: 0, count: 10, onSuccess: {[weak weakSelf = self] (posts) in
                 weakSelf?.postsArray = posts
                 weakSelf?.updateDataBase(newPosts: self.postsArray)
+                weakSelf?.printDataBase()
             })
         }
     }
@@ -82,6 +93,8 @@ class AZMainVC: UITableViewController {
         let mainVC =  UIApplication.shared.windows.first?.rootViewController
         mainVC?.present(navVC, animated: true, completion: nil)
     }
+    
+    //TODO: transition to fetchcontroller
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 3
@@ -134,9 +147,6 @@ class AZMainVC: UITableViewController {
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
     }
 }
-
-
-
 
 
 
