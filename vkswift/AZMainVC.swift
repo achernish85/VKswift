@@ -12,7 +12,7 @@ import Alamofire
 import SwiftyJSON
 import CoreData
 
-class AZMainVC: UITableViewController {
+class AZMainVC: CoreDataTableViewController {
     
     var user: AZUser? {
         didSet {
@@ -26,6 +26,8 @@ class AZMainVC: UITableViewController {
         }
     }
     
+    
+    
     var managedContext: NSManagedObjectContext! { didSet { updateUI() } }
   //  let context = ad.persistentContainer.viewContext
 
@@ -36,6 +38,21 @@ class AZMainVC: UITableViewController {
     
     private func updateUI() {
         
+        if let context = managedContext {
+        let request: NSFetchRequest<VKPost> = VKPost.fetchRequest()
+            request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: false)]
+        let resultsController: NSFetchedResultsController<VKPost> = NSFetchedResultsController(
+            fetchRequest: request,
+            managedObjectContext: context,
+            sectionNameKeyPath: nil,
+            cacheName: nil)
+        
+            fetchedResultsController =
+                resultsController as? NSFetchedResultsController<NSFetchRequestResult>
+            
+        } else {
+            fetchedResultsController = nil
+        }
     }
 
     func updateDataBase(newPosts:[AZPost]) {
@@ -96,65 +113,54 @@ class AZMainVC: UITableViewController {
     
     //TODO: transition to fetchcontroller
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if section == 0 {
-            return 1
-        } else if section == 1{
-            return 1
-        } else {
-            return  self.postsArray.count
-        }
-    }
-    
     private struct Storyboard {
         static let cellIdentifierProfile = "profile"
         static let cellIdentifierPost = "posts"
         static let cellIdentifierNewPost = "newPost"
         static let cellDefault = "cell"
     }
-    //MARK:CellForRow
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
     
-        if indexPath.section == 0 {
+        //MARK:CellForRow
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var text: String?
             let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.cellDefault, for: indexPath)
-            cell.textLabel?.text = user?.firstName
-            
-            return cell
-            
-        } else if indexPath.section == 2{
-            let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.cellDefault, for: indexPath)
-            let post = self.postsArray[indexPath.row]
-            cell.textLabel?.text = post.text
-            
-            return cell
-        } else {
-            
-            //TODO: add post wall
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.cellDefault, for: indexPath) as UITableViewCell
+        if let post = fetchedResultsController?.object(at: indexPath) as? VKPost {
+            post.managedObjectContext?.performAndWait {
+                text = post.text
+            }
+            cell.textLabel?.text = text
+        }
+        
             return cell
         }
-    }
     
     //MARK TableViewDelegate
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if self.fetchedResultsController == nil {
+            print("error when trying to delete object from managed object")
+            
+        } else if (editingStyle == .delete) {
+            
+            switch editingStyle {
+                
+            case .delete:
+                managedContext?.delete(fetchedResultsController?.object(at: indexPath) as! VKPost)
+                managedContext?.saveThrows()
+                
+            case .insert:
+                break
+            case .none:
+                break
+            }
+    }
+    }
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
