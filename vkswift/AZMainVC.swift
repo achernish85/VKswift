@@ -12,13 +12,12 @@ import Alamofire
 import SwiftyJSON
 import CoreData
 
-class AZMainVC: CoreDataTableViewController {
+class AZMainVC: UIViewController,UITableViewDelegate,UITableViewDataSource,NSFetchedResultsControllerDelegate {
     
-    var user: AZUser? {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var name: UILabel!
+    
+    var user: AZUser?
     
     var postsArray = [AZPost]() {
         didSet {
@@ -26,10 +25,23 @@ class AZMainVC: CoreDataTableViewController {
         }
     }
     
-    
-    
     var managedContext: NSManagedObjectContext! { didSet { updateUI() } }
   //  let context = ad.persistentContainer.viewContext
+    
+    var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>? {
+        didSet {
+            do {
+                if let frc = fetchedResultsController {
+                    frc.delegate = self
+                    try frc.performFetch()
+                }
+                //tableView.reloadData()
+            } catch let error {
+                print("NSFetchedResultsController.performFetch() failed: \(error)")
+            }
+        }
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,7 +134,7 @@ class AZMainVC: CoreDataTableViewController {
 
     
         //MARK:CellForRow
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var text: String?
             let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.cellDefault, for: indexPath)
         if let post = fetchedResultsController?.object(at: indexPath) as? VKPost {
@@ -137,7 +149,7 @@ class AZMainVC: CoreDataTableViewController {
     
     //MARK TableViewDelegate
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if self.fetchedResultsController == nil {
             print("error when trying to delete object from managed object")
             
@@ -156,11 +168,75 @@ class AZMainVC: CoreDataTableViewController {
             }
     }
     }
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
     }
+    
+    
+    // MARK: UITableViewDataSource
+    
+     func numberOfSections(in tableView: UITableView) -> Int {
+        return fetchedResultsController?.sections?.count ?? 1
+    }
+    
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let sections = fetchedResultsController?.sections , sections.count > 0 {
+            return sections[section].numberOfObjects
+        } else {
+            return 0
+        }
+    }
+    
+     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let sections = fetchedResultsController?.sections , sections.count > 0 {
+            return sections[section].name
+        } else {
+            return nil
+        }
+    }
+    
+     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return fetchedResultsController?.sectionIndexTitles
+    }
+    
+     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return fetchedResultsController?.section(forSectionIndexTitle: title, at: index) ?? 0
+    }
+    
+    // MARK: NSFetchedResultsControllerDelegate
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        switch type {
+        case .insert: tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
+        case .delete: tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
+        default: break
+        }
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+        case .update:
+            tableView.reloadRows(at: [indexPath!], with: .fade)
+        case .move:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+
 }
