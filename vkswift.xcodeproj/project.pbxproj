@@ -27,6 +27,7 @@
 		84234EBE1DD6661D003F28A4 /* AZLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84234EBD1DD6661D003F28A4 /* AZLoginVC.swift */; };
 		84EA69451DD997AA005944BD /* CoreDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA69441DD997AA005944BD /* CoreDataTableViewController.swift */; };
 		84EA69471DD998CB005944BD /* MOCExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA69461DD998CB005944BD /* MOCExtensions.swift */; };
+		84ED3C621DDE0ACD00AFC393 /* imageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED3C611DDE0ACD00AFC393 /* imageViewExtensions.swift */; };
 		84F756CE1DDC786700C18000 /* MyOldMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F756CD1DDC786700C18000 /* MyOldMainVC.swift */; };
 		D3759D3592BD849021FB4703 /* Pods_vkswift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BA3D2CA8148A9B17C167DD2 /* Pods_vkswift.framework */; };
 /* End PBXBuildFile section */
@@ -54,6 +55,7 @@
 		84234EBD1DD6661D003F28A4 /* AZLoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZLoginVC.swift; sourceTree = "<group>"; };
 		84EA69441DD997AA005944BD /* CoreDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTableViewController.swift; sourceTree = "<group>"; };
 		84EA69461DD998CB005944BD /* MOCExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOCExtensions.swift; sourceTree = "<group>"; };
+		84ED3C611DDE0ACD00AFC393 /* imageViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imageViewExtensions.swift; sourceTree = "<group>"; };
 		84F756CD1DDC786700C18000 /* MyOldMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOldMainVC.swift; sourceTree = "<group>"; };
 		9BA3D2CA8148A9B17C167DD2 /* Pods_vkswift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vkswift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC14D3EE5FFEF98DFBC15B04 /* Pods-vkswift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vkswift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-vkswift/Pods-vkswift.debug.xcconfig"; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				841B4ACC1DD890E70051287E /* constants.swift */,
+				84ED3C611DDE0ACD00AFC393 /* imageViewExtensions.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				841044D71DDB0B4000E9E0F5 /* VKPost+CoreDataProperties.swift in Sources */,
 				841044DA1DDB25C600E9E0F5 /* VKUser+CoreDataClass.swift in Sources */,
 				841044D61DDB0B4000E9E0F5 /* VKPost+CoreDataClass.swift in Sources */,
+				84ED3C621DDE0ACD00AFC393 /* imageViewExtensions.swift in Sources */,
 				841B4AC01DD863AD0051287E /* AZServerClient.swift in Sources */,
 				841044DB1DDB25C600E9E0F5 /* VKUser+CoreDataProperties.swift in Sources */,
 				841B4ABC1DD857360051287E /* AZUser.swift in Sources */,

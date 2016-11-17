@@ -14,10 +14,19 @@ import CoreData
 
 class AZMainVC: UIViewController,UITableViewDelegate,UITableViewDataSource,NSFetchedResultsControllerDelegate {
     
+    @IBOutlet weak var profileUserName: UILabel!
+    @IBOutlet weak var profileUserCity: UILabel!
+    @IBOutlet weak var profileAvatar: UIImageView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var name: UILabel!
-    
-    var user: AZUser?
+   
+    var user: AZUser? {
+        didSet {
+            self.profileUserName.text = "\((self.user?.firstName)!)  \((self.user?.lastName)!)"
+            self.profileUserCity.text = self.user?.city
+            self.profileAvatar.downloadedFrom(url: self.user?.imageURL as! URL)
+            self.view.setNeedsDisplay()
+        }
+    }
     
     var postsArray = [AZPost]() {
         didSet {
@@ -45,7 +54,7 @@ class AZMainVC: UIViewController,UITableViewDelegate,UITableViewDataSource,NSFet
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
     }
     
     private func updateUI() {
@@ -103,7 +112,6 @@ class AZMainVC: UIViewController,UITableViewDelegate,UITableViewDataSource,NSFet
         AZServerClient.manager.getUser(userID: token) { (user) in
             print("autorized: \(user.firstName) \(user.lastName)")
             self.user = user
-            
             
             AZServerClient.manager.getGroupWall(groupID: token, offset: 0, count: 10, onSuccess: {[weak weakSelf = self] (posts) in
                 weakSelf?.postsArray = posts
